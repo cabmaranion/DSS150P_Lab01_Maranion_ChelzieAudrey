@@ -1,0 +1,4 @@
+Python 3.14.7
+git version 2.55.0.windows.5
+Docker version 29.7.2, build a7dcaa6
+Docker Compose version v5.4.0
