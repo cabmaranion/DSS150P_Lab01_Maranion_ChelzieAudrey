@@ -1,0 +1,17 @@
+  column_name   |          data_type          | is_nullable 
+----------------+-----------------------------+-------------
+ ticket_id      | integer                     | NO
+ customer_id    | character varying           | NO
+ category       | character varying           | NO
+ priority       | character varying           | NO
+ assigned_agent | character varying           | YES
+ opened_at      | timestamp without time zone | NO
+ resolved_at    | timestamp without time zone | YES
+ status         | character varying           | NO
+(8 rows)
+
+ count 
+-------
+   250
+(1 row)
+
