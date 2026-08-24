@@ -1,3 +1,5 @@
+pandas
+sqlalchemy
 requests>=2.32
 psycopg[binary]>=3.2
 pyarrow>=17
