@@ -57,3 +57,27 @@ Run all scripts from the repository root with the virtual environment active.
 - The REST API URL was taken from the starter README rather than the LMS, since the README supplies a public endpoint.
 - It is not confirmed whether the 2 duplicated rows in customers.csv are errors or valid repeat registrations. This needs the source owner to clarify.
 - The schema in sql/01_create_schema.sql was created but not bulk-loaded, per the laboratory instructions.
+
+## AI Usage
+
+**Tool used:** Claude (Anthropic)
+
+**What I asked it to help with:**
+- Diagnosing why Docker Desktop would not start, which turned out to be missing WSL2 and Virtual Machine Platform components on my machine
+- Explaining PowerShell syntax, I did a lot of error that's why I have to ask help.
+- I asked it to guide me in fixing a TypeError in profile_sources.py caused by the nested `shipping` dictionaries in orders.json, and to explain why it happened
+- Explaining data engineering lifecycle concepts, which I had forgotten about
+- Provided information I can use as a baseline especially in .md files
+- Requested to help reconstruct what I want to say without any mistakes
+- Made sure what I'm doing is right
+
+**What I did and verified myself:**
+- Installed and configured Python, Git, Docker, and PostgreSQL on my own machine, including fixing a missing WSL2 installation that prevented Docker from starting
+- Ran every command and script myself and checked the output before moving to the next step
+- All profiling numbers, schema details, and evidence files come from actual runs on my machine, not from generated examples
+- Applied the SQL schema to my own PostgreSQL container and confirmed it is rerunnable
+- Stopped and restarted the container to confirm the environment recovers with data intact
+- Answered the reflection questions based on what I observed during the laboratory
+
+
+**Note:** The documents in docs/ were originally generated with AI assistance, using my own profiling results as a basis. No profiling results, screenshots, or execution evidence were fabricated.
