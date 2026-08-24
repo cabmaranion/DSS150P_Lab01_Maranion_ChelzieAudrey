@@ -1,0 +1,166 @@
+
+=== customers.csv ===
+file size: 17.8 KB
+rows: 250 columns: 7
+columns in order: ['customer_id', 'first_name', 'last_name', 'email', 'city', 'signup_date', 'customer_segment']
+
+data types:
+customer_id         str
+first_name          str
+last_name           str
+email               str
+city                str
+signup_date         str
+customer_segment    str
+dtype: object
+
+missing values per column:
+customer_id         0
+first_name          0
+last_name           0
+email               3
+city                2
+signup_date         0
+customer_segment    0
+dtype: int64
+
+fully duplicated rows: 2
+
+distinct values per column:
+customer_id         247
+first_name           20
+last_name            20
+email               184
+city                 10
+signup_date         189
+customer_segment      4
+dtype: int64
+
+first five records:
+  customer_id first_name   last_name  ...         city signup_date customer_segment
+0       C0001      Kevin    Bautista  ...        Pasig  2025-04-27     Professional
+1       C0002      Paolo     Mendoza  ...       Makati  2025-08-04           Retail
+2       C0003      Julia       Ramos  ...       Taguig  2026-01-15              SME
+3       C0004      Marco       Reyes  ...       Makati  2026-02-21          Student
+4       C0005      Paolo  Villanueva  ...  Quezon City  2025-12-15     Professional
+
+[5 rows x 7 columns]
+
+signup_date: earliest 2025-01-04 00:00:00, latest 2026-05-16 00:00:00
+
+=== orders.json ===
+file size: 76.1 KB
+rows: 250 columns: 9
+columns in order: ['order_id', 'customer_id', 'order_timestamp', 'status', 'item_count', 'subtotal', 'shipping_fee', 'total_amount', 'shipping']
+
+data types:
+order_id               str
+customer_id            str
+order_timestamp        str
+status                 str
+item_count           int64
+subtotal           float64
+shipping_fee         int64
+total_amount       float64
+shipping            object
+dtype: object
+
+missing values per column:
+order_id           0
+customer_id        0
+order_timestamp    0
+status             0
+item_count         0
+subtotal           0
+shipping_fee       0
+total_amount       0
+shipping           0
+dtype: int64
+
+nested columns (converted to text for counting): ['shipping']
+
+fully duplicated rows: 0
+
+distinct values per column:
+order_id           250
+customer_id        159
+order_timestamp    250
+status               6
+item_count           8
+subtotal           250
+shipping_fee         5
+total_amount       250
+shipping            15
+dtype: int64
+
+first five records:
+  order_id  ...                                        shipping
+0   O00001  ...  {'region': 'Region VII', 'method': 'Standard'}
+1   O00002  ...     {'region': 'Region XI', 'method': 'Pickup'}
+2   O00003  ...   {'region': 'Region IV-A', 'method': 'Pickup'}
+3   O00004  ...  {'region': 'Region III', 'method': 'Standard'}
+4   O00005  ...  {'region': 'Region VII', 'method': 'Standard'}
+
+[5 rows x 9 columns]
+
+numeric min/max:
+                min       max
+item_count      1.0      8.00
+subtotal      214.4  11997.73
+shipping_fee    0.0    149.00
+total_amount  214.4  12096.73
+
+order_timestamp: earliest 2026-01-02 03:00:00, latest 2026-06-30 07:38:00
+
+=== products.parquet ===
+file size: 14.3 KB
+rows: 200 columns: 7
+columns in order: ['product_id', 'product_name', 'category', 'brand', 'unit_price', 'stock_quantity', 'weight_kg']
+
+data types:
+product_id            str
+product_name          str
+category              str
+brand                 str
+unit_price        float64
+stock_quantity      int32
+weight_kg         float64
+dtype: object
+
+missing values per column:
+product_id        0
+product_name      0
+category          0
+brand             0
+unit_price        0
+stock_quantity    0
+weight_kg         0
+dtype: int64
+
+fully duplicated rows: 0
+
+distinct values per column:
+product_id        200
+product_name      200
+category            6
+brand               6
+unit_price        200
+stock_quantity    135
+weight_kg         197
+dtype: int64
+
+first five records:
+  product_id         product_name  ... stock_quantity weight_kg
+0      P0001  Pioneer Storage 001  ...             61     0.215
+1      P0002   Nimbus Monitor 002  ...            239     4.407
+2      P0003    Aster Storage 003  ...             53     6.358
+3      P0004     Vertex Phone 004  ...             27     6.199
+4      P0005    Orion Storage 005  ...            109     5.168
+
+[5 rows x 7 columns]
+
+numeric min/max:
+                    min        max
+unit_price      392.850  84796.840
+stock_quantity    0.000    250.000
+weight_kg         0.114      7.989
