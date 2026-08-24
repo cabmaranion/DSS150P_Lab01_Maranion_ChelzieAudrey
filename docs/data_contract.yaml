@@ -1,0 +1,61 @@
+# Chosen source: customers.csv
+# Reason: it is a flat, structured file with clear columns and measurable
+# quality issues, which makes it suitable for a basic contract.
+
+dataset_name: customers
+version: 1.0
+owner: "unknown - requires source owner confirmation"
+source_type: file
+source_format: csv
+acquisition_method: read the file from data/raw using pandas
+expected_update_pattern: batch
+primary_key: customer_id
+
+schema:
+  - name: customer_id
+    type: string
+    nullable: false
+    description: identifier for each customer, formatted like C0001
+  - name: first_name
+    type: string
+    nullable: false
+    description: customer given name
+  - name: last_name
+    type: string
+    nullable: false
+    description: customer family name
+  - name: email
+    type: string
+    nullable: true
+    description: contact email address, missing in 3 of 250 rows
+  - name: city
+    type: string
+    nullable: true
+    description: customer city, missing in 2 of 250 rows
+  - name: signup_date
+    type: date
+    nullable: false
+    description: date the customer registered, stored as text in the raw file
+  - name: customer_segment
+    type: string
+    nullable: false
+    description: business segment, one of Retail, SME, Professional, Student
+
+quality_rules:
+  - customer_id must not be null
+  - customer_id must be unique after deduplication, since the raw file has 247 distinct values across 250 rows
+  - customer_id must start with the letter C
+  - signup_date must be a valid date and must not be in the future
+  - customer_segment must be one of the four observed values
+  - email must contain an @ symbol when it is present
+
+freshness_expectation: "unknown - requires confirmation"
+duplicate_policy: deduplicate
+schema_evolution_policy: >
+  Any new or renamed column must be reviewed before loading. The CSV has no
+  enforced schema, so a change in the header row would silently break the pipeline.
+consumer: analysts querying the lab.customers table in PostgreSQL
+notes: >
+  Profiling found 2 fully duplicated rows, 3 missing emails and 2 missing cities.
+  The source owner has not confirmed whether duplicates are errors or valid
+  repeat registrations, so the duplicate policy may need revision.
